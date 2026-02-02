@@ -59,5 +59,3 @@ changelog:
 release:
   # If you want to use a custom GitHub token, you can set it in the GITHUB_TOKEN environment variable.
   # Otherwise, the default GitHub Actions token will be used.
-  extra_files:
-    - glob: 'terraform-provider-envserver_v{{ .Version }}'
