@@ -6,8 +6,8 @@ build:
 
 # Install the provider locally for testing
 install: build
-	mkdir -p ~/.terraform.d/plugins/registry.terraform.io/your-org/envserver/0.1.0/$$(go env GOOS)_$$(go env GOARCH)
-	cp terraform-provider-envserver ~/.terraform.d/plugins/registry.terraform.io/your-org/envserver/0.1.0/$$(go env GOOS)_$$(go env GOARCH)/
+	mkdir -p ~/.terraform.d/plugins/registry.terraform.io/raanand-home/envserver/0.1.0/$$(go env GOOS)_$$(go env GOARCH)
+	cp terraform-provider-envserver ~/.terraform.d/plugins/registry.terraform.io/raanand-home/envserver/0.1.0/$$(go env GOOS)_$$(go env GOARCH)/
 
 # Run unit tests
 test:

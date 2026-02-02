@@ -11,7 +11,7 @@ OS=$(go env GOOS)
 ARCH=$(go env GOARCH)
 
 # Create plugin directory
-PLUGIN_DIR="${HOME}/.terraform.d/plugins/registry.terraform.io/your-org/envserver/0.1.0/${OS}_${ARCH}"
+PLUGIN_DIR="${HOME}/.terraform.d/plugins/registry.terraform.io/raanand-home/envserver/0.1.0/${OS}_${ARCH}"
 echo "Creating plugin directory: ${PLUGIN_DIR}"
 mkdir -p "${PLUGIN_DIR}"
 
@@ -26,7 +26,7 @@ echo ""
 echo "terraform {"
 echo "  required_providers {"
 echo "    envserver = {"
-echo "      source  = \"your-org/envserver\""
+echo "      source  = \"raanand-home/envserver\""
 echo "      version = \"0.1.0\""
 echo "    }"
 echo "  }"

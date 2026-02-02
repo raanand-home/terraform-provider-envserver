@@ -19,7 +19,7 @@ go build -o terraform-provider-envserver
 terraform {
   required_providers {
     envserver = {
-      source = "your-org/envserver"
+      source = "raanand-home/envserver"
       version = "~> 1.0"
     }
   }
@@ -57,8 +57,8 @@ go test ./...
 go build -o terraform-provider-envserver
 
 # Install to local Terraform plugins directory
-mkdir -p ~/.terraform.d/plugins/registry.terraform.io/your-org/envserver/0.1.0/$(go env GOOS)_$(go env GOARCH)
-cp terraform-provider-envserver ~/.terraform.d/plugins/registry.terraform.io/your-org/envserver/0.1.0/$(go env GOOS)_$(go env GOARCH)/
+mkdir -p ~/.terraform.d/plugins/registry.terraform.io/raanand-home/envserver/0.1.0/$(go env GOOS)_$(go env GOARCH)
+cp terraform-provider-envserver ~/.terraform.d/plugins/registry.terraform.io/raanand-home/envserver/0.1.0/$(go env GOOS)_$(go env GOARCH)/
 ```
 
 ### Running Acceptance Tests

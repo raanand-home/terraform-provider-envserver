@@ -158,7 +158,7 @@ Create `test.tf`:
 terraform {
   required_providers {
     envserver = {
-      source  = "your-org/envserver"
+      source  = "raanand-home/envserver"
       version = "0.1.0"
     }
   }

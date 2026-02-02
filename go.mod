@@ -1,4 +1,4 @@
-module github.com/your-org/terraform-provider-envserver
+module github.com/raanand-home/terraform-provider-envserver
 
 go 1.24.0
 

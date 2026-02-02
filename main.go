@@ -7,7 +7,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 
-	"github.com/your-org/terraform-provider-envserver/internal/provider"
+	"github.com/raanand-home/terraform-provider-envserver/internal/provider"
 )
 
 // version is set via -ldflags during build
@@ -20,7 +20,7 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/your-org/envserver",
+		Address: "registry.terraform.io/raanand-home/envserver",
 		Debug:   debug,
 	}
 

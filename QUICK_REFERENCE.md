@@ -175,7 +175,7 @@ import (
     "github.com/hashicorp/terraform-plugin-framework/resource"
     "github.com/hashicorp/terraform-plugin-framework/resource/schema"
     "github.com/hashicorp/terraform-plugin-framework/types"
-    "github.com/your-org/terraform-provider-envserver/internal/client"
+    "github.com/raanand-home/terraform-provider-envserver/internal/client"
 )
 
 type YourResourceResource struct {
@@ -261,7 +261,7 @@ resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 make install
 
 # Verify
-ls -la ~/.terraform.d/plugins/registry.terraform.io/your-org/envserver/
+ls -la ~/.terraform.d/plugins/registry.terraform.io/raanand-home/envserver/
 
 # Re-init Terraform
 rm -rf .terraform .terraform.lock.hcl
@@ -281,7 +281,7 @@ make build
 ### Import Errors
 ```bash
 # Check module path in go.mod
-# Ensure all imports use: github.com/your-org/terraform-provider-envserver
+# Ensure all imports use: github.com/raanand-home/terraform-provider-envserver
 ```
 
 ## Useful Links

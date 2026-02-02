@@ -38,7 +38,7 @@ make install
 
 This installs the provider to:
 ```
-~/.terraform.d/plugins/registry.terraform.io/your-org/envserver/0.1.0/<OS>_<ARCH>/
+~/.terraform.d/plugins/registry.terraform.io/raanand-home/envserver/0.1.0/<OS>_<ARCH>/
 ```
 
 ## Using the Provider
@@ -58,7 +58,7 @@ Create `main.tf`:
 terraform {
   required_providers {
     envserver = {
-      source = "your-org/envserver"
+      source = "raanand-home/envserver"
       version = "0.1.0"
     }
   }
@@ -250,7 +250,7 @@ If Terraform can't find the provider:
 make install
 
 # Verify installation
-ls -la ~/.terraform.d/plugins/registry.terraform.io/your-org/envserver/0.1.0/
+ls -la ~/.terraform.d/plugins/registry.terraform.io/raanand-home/envserver/0.1.0/
 
 # Re-initialize Terraform
 cd your-config-directory

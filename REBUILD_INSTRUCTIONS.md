@@ -52,7 +52,7 @@ OS=$(go env GOOS)
 ARCH=$(go env GOARCH)
 
 # Create plugin directory
-PLUGIN_DIR="${HOME}/.terraform.d/plugins/registry.terraform.io/your-org/envserver/0.1.0/${OS}_${ARCH}"
+PLUGIN_DIR="${HOME}/.terraform.d/plugins/registry.terraform.io/raanand-home/envserver/0.1.0/${OS}_${ARCH}"
 mkdir -p "${PLUGIN_DIR}"
 
 # Copy binary
@@ -72,7 +72,7 @@ terraform init
 
 1. **Check if the binary was updated:**
    ```bash
-   ls -la ~/.terraform.d/plugins/registry.terraform.io/your-org/envserver/0.1.0/*/terraform-provider-envserver
+   ls -la ~/.terraform.d/plugins/registry.terraform.io/raanand-home/envserver/0.1.0/*/terraform-provider-envserver
    ```
 
 2. **Verify the build succeeded:**
