@@ -125,7 +125,7 @@ func (d *ApplicationVersionDataSource) Read(ctx context.Context, req datasource.
 	// Map response to model
 	data.ID = types.StringValue(version.ID)
 	data.Ref = types.StringValue(version.Ref)
-	data.CreatedAt = types.StringValue(version.CreatedAt.Format("2006-01-02T15:04:05Z07:00"))
+	data.CreatedAt = types.StringValue(version.CreatedAt.Time.Format("2006-01-02T15:04:05Z07:00"))
 
 	// Convert version_data map to types.Map
 	if version.VersionData != nil {

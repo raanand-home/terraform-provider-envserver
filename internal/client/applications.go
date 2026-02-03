@@ -3,7 +3,6 @@ package client
 import (
 	"context"
 	"fmt"
-	"time"
 )
 
 // Application represents an application in the system
@@ -25,7 +24,7 @@ type ApplicationVersion struct {
 	ID          string            `json:"id"`
 	Ref         string            `json:"ref"`
 	VersionData map[string]string `json:"version_data"`
-	CreatedAt   time.Time         `json:"created_at"`
+	CreatedAt   FlexibleTime      `json:"created_at"`
 	Operations  []OperationPublic `json:"operations,omitempty"`
 }
 
