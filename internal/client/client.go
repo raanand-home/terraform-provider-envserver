@@ -48,6 +48,7 @@ type Client struct {
 // AuthConfig contains authentication configuration
 type AuthConfig struct {
 	Endpoint         string
+	Token            string
 	APIKey           string
 	Username         string
 	Password         string
@@ -72,8 +73,11 @@ func NewClient(config *AuthConfig) (*Client, error) {
 		DefaultEnvID:     config.DefaultEnvID,
 	}
 
-	// Authenticate based on provided credentials
-	if config.APIKey != "" {
+	// Authenticate based on provided credentials (token takes highest priority)
+	if config.Token != "" {
+		// Use pre-authenticated token directly
+		client.Token = config.Token
+	} else if config.APIKey != "" {
 		client.Token = config.APIKey
 	} else if config.Username != "" && config.Password != "" {
 		token, err := client.loginWithCredentials(config.Username, config.Password)

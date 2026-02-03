@@ -10,7 +10,7 @@ terraform {
 #
 # Configuration can be provided via:
 # 1. Provider block attributes (highest priority)
-# 2. Environment variables (ENVSERVER_ENDPOINT, ENVSERVER_USERNAME, ENVSERVER_PASSWORD, etc.)
+# 2. Environment variables (ENVSERVER_ENDPOINT, ENVSERVER_USERNAME, ENVSERVER_PASSWORD, ENV_SERVER_TOKEN, etc.)
 # 3. Config file at ~/.env_server.toml (lowest priority)
 #
 # The ~/.env_server.toml file format:
@@ -24,14 +24,17 @@ provider "envserver" {
 
   # Authentication - choose one method:
 
-  # Option 1: Service Account API Key (recommended for automation)
+  # Option 1: Pre-authenticated Token (highest priority - can also be set via ENV_SERVER_TOKEN)
+  # token = var.envserver_token
+
+  # Option 2: Service Account API Key (recommended for automation)
   api_key = var.envserver_api_key
 
-  # Option 2: Username and Password (can also be set in ~/.env_server.toml)
+  # Option 3: Username and Password (can also be set in ~/.env_server.toml)
   # username = var.envserver_username
   # password = var.envserver_password
 
-  # Option 3: Okta Token
+  # Option 4: Okta Token
   # okta_token = var.envserver_okta_token
 
   # Optional settings

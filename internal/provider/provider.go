@@ -49,6 +49,7 @@ type EnvServerProvider struct {
 // EnvServerProviderModel describes the provider data model
 type EnvServerProviderModel struct {
 	Endpoint           types.String `tfsdk:"endpoint"`
+	Token              types.String `tfsdk:"token"`
 	APIKey             types.String `tfsdk:"api_key"`
 	Username           types.String `tfsdk:"username"`
 	Password           types.String `tfsdk:"password"`
@@ -80,23 +81,28 @@ func (p *EnvServerProvider) Schema(ctx context.Context, req provider.SchemaReque
 		Description: "Terraform provider for Environment Server API. Manage projects, applications, environments, and access control.",
 		Attributes: map[string]schema.Attribute{
 			"endpoint": schema.StringAttribute{
-					Description: "Environment Server API endpoint URL. Can also be set via ENVSERVER_ENDPOINT environment variable or 'url' in ~/.env_server.toml.",
-					Optional:    true,
-				},
-				"api_key": schema.StringAttribute{
-					Description: "Service account API key for authentication. Can also be set via ENVSERVER_API_KEY environment variable.",
-					Optional:    true,
-					Sensitive:   true,
-				},
-				"username": schema.StringAttribute{
-					Description: "Username for authentication. Can also be set via ENVSERVER_USERNAME environment variable or 'username' in ~/.env_server.toml.",
-					Optional:    true,
-				},
-				"password": schema.StringAttribute{
-					Description: "Password for authentication. Can also be set via ENVSERVER_PASSWORD environment variable or 'password' in ~/.env_server.toml.",
-					Optional:    true,
-					Sensitive:   true,
-				},
+				Description: "Environment Server API endpoint URL. Can also be set via ENVSERVER_ENDPOINT environment variable or 'url' in ~/.env_server.toml.",
+				Optional:    true,
+			},
+			"token": schema.StringAttribute{
+				Description: "Pre-authenticated token for API access. Can also be set via ENV_SERVER_TOKEN environment variable. When set, this takes precedence over other authentication methods.",
+				Optional:    true,
+				Sensitive:   true,
+			},
+			"api_key": schema.StringAttribute{
+				Description: "Service account API key for authentication. Can also be set via ENVSERVER_API_KEY environment variable.",
+				Optional:    true,
+				Sensitive:   true,
+			},
+			"username": schema.StringAttribute{
+				Description: "Username for authentication. Can also be set via ENVSERVER_USERNAME environment variable or 'username' in ~/.env_server.toml.",
+				Optional:    true,
+			},
+			"password": schema.StringAttribute{
+				Description: "Password for authentication. Can also be set via ENVSERVER_PASSWORD environment variable or 'password' in ~/.env_server.toml.",
+				Optional:    true,
+				Sensitive:   true,
+			},
 			"okta_token": schema.StringAttribute{
 				Description: "Okta token for authentication. Can also be set via ENVSERVER_OKTA_TOKEN environment variable.",
 				Optional:    true,
@@ -136,6 +142,7 @@ func (p *EnvServerProvider) Configure(ctx context.Context, req provider.Configur
 
 	// Get values from environment variables if not set in config, then fall back to config file
 	endpoint := getConfigValueWithFileFallback(config.Endpoint, "ENVSERVER_ENDPOINT", fileConfig, "url")
+	token := getConfigValue(config.Token, "ENV_SERVER_TOKEN", "")
 	apiKey := getConfigValue(config.APIKey, "ENVSERVER_API_KEY", "")
 	username := getConfigValueWithFileFallback(config.Username, "ENVSERVER_USERNAME", fileConfig, "username")
 	password := getConfigValueWithFileFallback(config.Password, "ENVSERVER_PASSWORD", fileConfig, "password")
@@ -160,6 +167,7 @@ func (p *EnvServerProvider) Configure(ctx context.Context, req provider.Configur
 	// Create API client
 	clientConfig := &client.AuthConfig{
 		Endpoint:         endpoint,
+		Token:            token,
 		APIKey:           apiKey,
 		Username:         username,
 		Password:         password,
