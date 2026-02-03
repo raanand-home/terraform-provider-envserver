@@ -38,19 +38,23 @@ func IsNotFoundError(err error) bool {
 
 // Client is the API client for Environment Server
 type Client struct {
-	BaseURL    string
-	HTTPClient *http.Client
-	Token      string
+	BaseURL          string
+	HTTPClient       *http.Client
+	Token            string
+	DefaultProjectID string
+	DefaultEnvID     string
 }
 
 // AuthConfig contains authentication configuration
 type AuthConfig struct {
-	Endpoint  string
-	APIKey    string
-	Username  string
-	Password  string
-	OktaToken string
-	Timeout   int
+	Endpoint         string
+	APIKey           string
+	Username         string
+	Password         string
+	OktaToken        string
+	Timeout          int
+	DefaultProjectID string
+	DefaultEnvID     string
 }
 
 // NewClient creates a new Environment Server API client
@@ -64,6 +68,8 @@ func NewClient(config *AuthConfig) (*Client, error) {
 		HTTPClient: &http.Client{
 			Timeout: time.Duration(config.Timeout) * time.Second,
 		},
+		DefaultProjectID: config.DefaultProjectID,
+		DefaultEnvID:     config.DefaultEnvID,
 	}
 
 	// Authenticate based on provided credentials
