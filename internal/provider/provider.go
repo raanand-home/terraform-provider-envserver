@@ -241,6 +241,8 @@ func (p *EnvServerProvider) Resources(ctx context.Context) []func() resource.Res
 		NewServiceAccountAPIKeyResource,
 		NewPolicyResource,
 		NewServiceAccountPolicyAttachmentResource,
+		NewApplicationInstanceResource,
+		NewApplicationResource,
 	}
 }
 
@@ -250,5 +252,9 @@ func (p *EnvServerProvider) DataSources(ctx context.Context) []func() datasource
 		NewProjectDataSource,
 		NewPolicyDataSource,
 		NewConnectTokenDataSource,
+		NewApplicationDataSource,
+		NewApplicationVersionDataSource,
+		NewEnvironmentConfigDataSource,
+		NewEnvironmentConfigsDataSource,
 	}
 }
