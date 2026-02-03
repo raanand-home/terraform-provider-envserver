@@ -13,7 +13,7 @@ type ConnectTokenRequest struct {
 
 // ConnectTokenResponse represents the response from the connect token endpoint
 type ConnectTokenResponse struct {
-	Token string `json:"token"`
+	Token string `json:"access_token"`
 }
 
 // GetConnectToken generates an OIDC token for connecting to external services from an environment
